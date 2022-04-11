@@ -15,7 +15,7 @@ namespace Trigger.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddDbContext<TriggerDbContext>(options => options.UseNpgsql("Host=localhost;Port=5432;Database=TriggerDb;UserId=postgres;Password=bb1501;"));
+            services.AddDbContext<TriggerDbContext>(options => options.UseSqlite("Data Source = TriggerDb;"));
             services.AddScoped<IFormatReadRepository, FormatReadRepository>();
             services.AddScoped<IFormatWriteRepository, FormatWriteRepository>();
         }

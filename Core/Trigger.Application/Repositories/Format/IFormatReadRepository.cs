@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,6 @@ namespace Trigger.Application.Repositories
 {
     public interface IFormatReadRepository : IReadRepository<Format>
     {
+        public List<string> ReturnFileNames(IFormFileCollection files);
     }
 }
