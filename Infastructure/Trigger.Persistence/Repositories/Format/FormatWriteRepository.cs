@@ -1,5 +1,6 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
+using Amazon.S3.Transfer;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -17,19 +18,20 @@ namespace Trigger.Persistence.Repositories
         public FormatWriteRepository(TriggerDbContext context) : base(context)
         {
         }
-        public bool UploadToS3(string secretAccessKey, string accessKey,string bucketName,List<string> filenames,string folder,IFormFileCollection files)
+        public async Task<bool> UploadToS3(string secretAccessKey, string accessKey,string bucketName,List<string> filenames,string folder,IFormFileCollection files)
         {
             AmazonS3Client client = new AmazonS3Client(accessKey, secretAccessKey,Amazon.RegionEndpoint.EUWest2);
             var number = 0;
             foreach (var file in files)
             {
-                var postRequest = new PutObjectRequest
+                var postRequest = new TransferUtilityUploadRequest
                 {
                     BucketName = bucketName,
                     Key = folder +"/"+ filenames[number],
                     InputStream = file.OpenReadStream(),
                 };
-                PutObjectResponse response = client.PutObjectAsync(postRequest).Result;
+                var fileTransferUtility = new TransferUtility(client);
+                await fileTransferUtility.UploadAsync(postRequest);
                 number++;
             }
             return true;

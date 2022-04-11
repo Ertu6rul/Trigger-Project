@@ -43,9 +43,9 @@ namespace Trigger.API.Controllers
             };
             await _formatWriteRepository.AddAsync(format);
             await _formatWriteRepository.SaveAsync();
-            _formatWriteRepository.UploadToS3("AKIA6D7UD3FPE6UDHWPC", "YVkoX/2P2uh6V/Q3tjnVYfhORKSODUS8uPgBtz4m", "badu-bucketaws-deneme", nameList, "AudioFiles", files);
+            await _formatWriteRepository.UploadToS3( "YVkoX/2P2uh6V/Q3tjnVYfhORKSODUS8uPgBtz4m", "AKIA6D7UD3FPE6UDHWPC", "badu-bucketaws-deneme", nameList, "AudioFiles", files);
 
-            return CreatedAtAction("File", new { id = format.Id }, format);
+            return CreatedAtAction("Format", new { id = format.Id }, format);
 
 
         }
