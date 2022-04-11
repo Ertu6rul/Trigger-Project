@@ -15,7 +15,7 @@ namespace Trigger.Persistence
     {
         public static void AddPersistenceServices(this IServiceCollection services)
         {
-            services.AddDbContext<TriggerDbContext>(options => options.UseMySQL(@"server=localhost;port=3306;database=TriggerDb;user=root;password=bb1501;"));
+            services.AddDbContext<TriggerDbContext>(options => options.UseMySQL(@"Server=localhost;Port=3306;Database=TriggerDb;Uid=root;Pwd=bb1501;"));
             services.AddScoped<IFormatReadRepository, FormatReadRepository>();
             services.AddScoped<IFormatWriteRepository, FormatWriteRepository>();
         }

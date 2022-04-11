@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infastructure", "Infastruct
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C7B81FAB-585B-42C9-88A8-126CC7A0554E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trigger.Domain", "Core\Trigger.Domain\Trigger.Domain.csproj", "{0EA8EC35-6BB8-4C01-A1AB-E44DF49FF728}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trigger.Domain", "Core\Trigger.Domain\Trigger.Domain.csproj", "{0EA8EC35-6BB8-4C01-A1AB-E44DF49FF728}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trigger.Application", "Core\Trigger.Application\Trigger.Application.csproj", "{14DE7D5C-AD25-4CC6-A599-5AA18310BD34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trigger.Application", "Core\Trigger.Application\Trigger.Application.csproj", "{14DE7D5C-AD25-4CC6-A599-5AA18310BD34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trigger.Infastructure", "Infastructure\Trigger.Infastructure\Trigger.Infastructure.csproj", "{1D3E77D9-A6BB-46CD-9AD9-2FDF82DFCA1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trigger.Infastructure", "Infastructure\Trigger.Infastructure\Trigger.Infastructure.csproj", "{1D3E77D9-A6BB-46CD-9AD9-2FDF82DFCA1B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trigger.Persistence", "Infastructure\Trigger.Persistence\Trigger.Persistence.csproj", "{ABD70525-EFC1-4851-90B7-D4E7A521969B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trigger.Persistence", "Infastructure\Trigger.Persistence\Trigger.Persistence.csproj", "{ABD70525-EFC1-4851-90B7-D4E7A521969B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trigger.API", "Presentation\Trigger.API\Trigger.API.csproj", "{5315123D-0A0E-4358-B64C-0164060E5A8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Trigger.API", "Presentation\Trigger.API\Trigger.API.csproj", "{5315123D-0A0E-4358-B64C-0164060E5A8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

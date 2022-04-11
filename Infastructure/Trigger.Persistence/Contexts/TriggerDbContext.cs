@@ -9,7 +9,7 @@ using Trigger.Domain.Entities.Common;
 
 namespace Trigger.Persistence.Contexts
 {
-    public class TriggerDbContext: DbContext
+    public class TriggerDbContext : DbContext
     {
         public TriggerDbContext(DbContextOptions options) : base(options)
         { }
@@ -35,4 +35,5 @@ namespace Trigger.Persistence.Contexts
 
             return await base.SaveChangesAsync(cancellationToken);
         }
+    }
 }

@@ -14,7 +14,7 @@ namespace Trigger.Persistence
         public TriggerDbContext CreateDbContext(string[] args)
         {
             DbContextOptionsBuilder<TriggerDbContext> dbContextOptionsBuilder = new();
-            dbContextOptionsBuilder.UseMySQL(@"server=localhost;port=3306;database=TriggerDb;user=root;password=bb1501;");
+            dbContextOptionsBuilder.UseMySQL(@"Server=localhost;Port=3306;Database=TriggerDb;Uid=root;Pwd=bb1501;");
             return new(dbContextOptionsBuilder.Options);
         }
     }
