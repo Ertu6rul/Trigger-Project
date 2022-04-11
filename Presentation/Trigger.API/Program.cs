@@ -1,18 +1,20 @@
 using Amazon.S3;
+using Trigger.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAWSService<IAmazonS3>();
+builder.Services.AddPersistenceServices();
 builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
     policy.WithOrigins("http://localhost:4200", "https://localhost:4200").AllowAnyHeader().AllowAnyMethod()
 ));
 builder.Services.AddSwaggerGen();
+builder.Services.AddHttpContextAccessor();
 
 
 var app = builder.Build();
@@ -23,7 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseCors();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

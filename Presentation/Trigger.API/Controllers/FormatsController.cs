@@ -4,12 +4,16 @@ using Trigger.Domain.Entities;
 
 namespace Trigger.API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class FormatsController: ControllerBase
     {
         readonly private IFormatWriteRepository _formatWriteRepository;
         readonly private IFormatReadRepository _formatReadRepository;
 
-        public FormatsController(IFormatReadRepository formatReadRepository, IFormatWriteRepository formatWriteRepository)
+        public FormatsController(
+            IFormatReadRepository formatReadRepository,
+            IFormatWriteRepository formatWriteRepository)
         {
             _formatReadRepository = formatReadRepository;
             _formatWriteRepository = formatWriteRepository;
