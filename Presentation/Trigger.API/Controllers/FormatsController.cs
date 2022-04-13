@@ -22,12 +22,12 @@ namespace Trigger.API.Controllers
             _formatReadRepository = formatReadRepository;
             _formatWriteRepository = formatWriteRepository;
         }
-        [HttpGet]
-        public async Task<ActionResult<byte[]>> Get()
+        [HttpGet("{id}/{voiceName}")]
+        public async Task<ActionResult<byte[]>> Get(int id,string voiceName)
         {
-            var format = _formatReadRepository.GetByIdAsync(10); // IQueryable(Format)
-            var voice = await _formatReadRepository.GetFileFromS3(format.Result.Voice1Url, "YVkoX/2P2uh6V/Q3tjnVYfhORKSODUS8uPgBtz4m", "AKIA6D7UD3FPE6UDHWPC", "badu-bucketaws-deneme");
-            return File(voice, "application/octet-stream", format.Result.Voice1Url);
+            var format = _formatReadRepository.GetByIdAsync(id); // IQueryable(Format)
+            var voice = await _formatReadRepository.GetFileFromS3(voiceName, "YVkoX/2P2uh6V/Q3tjnVYfhORKSODUS8uPgBtz4m", "AKIA6D7UD3FPE6UDHWPC", "badu-bucketaws-deneme");
+            return File(voice, "application/octet-stream", voiceName);
         }
 
         [HttpPost]
