@@ -10,12 +10,12 @@ namespace Trigger.Domain.Entities.Models
     public class FormatModel
     {
         public string Name { get; set; }
-        public IFormFile Voice1 { get; set; }
-        public IFormFile Voice2 { get; set; }
-        public IFormFile Voice3 { get; set; }
-        public IFormFile Voice4 { get; set; }
-        public IFormFile Voice5 { get; set; }
-        public IFormFile Voice6 { get; set; }
+        public byte[] Voice1 { get; set; }
+        public byte[] Voice2 { get; set; }
+        public byte[] Voice3 { get; set; }
+        public byte[] Voice4 { get; set; }
+        public byte[] Voice5 { get; set; }
+        public byte[] Voice6 { get; set; }
 
     }
 }

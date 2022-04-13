@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Trigger.Application.Repositories;
@@ -33,40 +34,34 @@ namespace Trigger.Persistence.Repositories
         }
         public async Task<byte[]> GetFileFromS3(string filename, string secretAccessKey, string accessKey, string bucketName)
         {
-            var extension = filename.Substring(filename.Length - 3);
-            var folder = "";
-            if (extension == "wav")
-            {
-                folder = "AudioFiles/";
-            }
+            var list = new List<byte[]>();
+            var folder = "AudioFiles/";
             using (AmazonS3Client client = new AmazonS3Client(accessKey, secretAccessKey, Amazon.RegionEndpoint.EUWest2))
             {
+                MemoryStream ms = null;
                 GetObjectRequest request = new GetObjectRequest
                 {
                     BucketName = bucketName,
-                    Key = folder + filename
+                    Key = "AudioFiles/" + filename
                 };
-                var response = await client.GetObjectAsync(request);
-
-                using (Stream responseStream = response.ResponseStream)
+                using (var response = await client.GetObjectAsync(request))
                 {
-                    byte[] buffer = new byte[16 * 1024];
-                    using (MemoryStream ms = new MemoryStream())
+                    if (response.HttpStatusCode == HttpStatusCode.OK)
                     {
-                        int read;
-                        while ((read = responseStream.Read(buffer, 0, buffer.Length)) > 0)
+                        using (ms = new MemoryStream())
                         {
-                            ms.Write(buffer, 0, read);
+                            await response.ResponseStream.CopyToAsync(ms);
                         }
-                        var bytes = ms.ToArray();
-                        var download = new FileContentResult(bytes, "application/pdf");
-                        download.FileDownloadName = filename;
-                        return download.FileContents;
                     }
-
                 }
+                return ms.ToArray();
 
             }
+
+
+
         }
+
+        
     }
 }

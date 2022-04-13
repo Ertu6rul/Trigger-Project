@@ -27,17 +27,14 @@ namespace Trigger.API.Controllers
         {
             var format = _formatReadRepository.GetByIdAsync(10); // IQueryable(Format)
             var voice = await _formatReadRepository.GetFileFromS3(format.Result.Voice1Url, "YVkoX/2P2uh6V/Q3tjnVYfhORKSODUS8uPgBtz4m", "AKIA6D7UD3FPE6UDHWPC", "badu-bucketaws-deneme");
-            return voice;
+            return File(voice, "application/octet-stream", format.Result.Voice1Url);
         }
 
         [HttpPost]
         public async Task<ActionResult<Format>> Format()
         {
             var files = Request.Form.Files;
-            //var files = new List<IFormFile>() { model.Voice1,model.Voice2, model.Voice3 , model.Voice4 , model.Voice5 , model.Voice6 };
             var nameList = _formatReadRepository.ReturnFileNames(files);
-            //var nameList = new List<string>() {model.Voice1.FileName, model.Voice2.FileName, model.Voice3.FileName, model.Voice4.FileName, model.Voice5.FileName, model.Voice6.FileName };
-
             var format = new Format()
             {
                 Name = "X",
@@ -52,10 +49,6 @@ namespace Trigger.API.Controllers
             await _formatWriteRepository.AddAsync(format);
             await _formatWriteRepository.SaveAsync();
             await _formatWriteRepository.UploadToS3("YVkoX/2P2uh6V/Q3tjnVYfhORKSODUS8uPgBtz4m", "AKIA6D7UD3FPE6UDHWPC", "badu-bucketaws-deneme", nameList, "AudioFiles", files);
-
-
-
-
             return CreatedAtAction("Format", new { id = format.Id }, format);
 
 
