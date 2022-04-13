@@ -11,7 +11,7 @@ namespace Trigger.Persistence.Contexts
 {
     public class TriggerDbContext : DbContext
     {
-        public TriggerDbContext(DbContextOptions options) : base(options)
+        public TriggerDbContext(DbContextOptions<TriggerDbContext> options) : base(options)
         { }
 
         public DbSet<Format> Formats { get; set; }

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Trigger.Application.Repositories;
 using Trigger.Persistence.Contexts;
+using Trigger.Persistence.Contexts.Identity;
 using Trigger.Persistence.Repositories;
 
 namespace Trigger.Persistence

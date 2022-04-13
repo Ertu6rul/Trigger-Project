@@ -1,5 +1,9 @@
 using Amazon.S3;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Trigger.Domain.Entities;
 using Trigger.Persistence;
+using Trigger.Persistence.Contexts.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +19,8 @@ builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
 ));
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
+//builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+
 
 
 var app = builder.Build();
@@ -27,7 +33,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseCors();
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -18,9 +18,9 @@ namespace Trigger.Persistence.Repositories
         public FormatWriteRepository(TriggerDbContext context) : base(context)
         {
         }
-        public async Task<bool> UploadToS3(string secretAccessKey, string accessKey,string bucketName,List<string> filenames,string folder,IFormFileCollection files)
+        public async Task<bool> UploadToS3(string secretAccessKey, string accessKey,string bucketName,List<string> filenames,string folder, IFormFileCollection files)
         {
-            AmazonS3Client client = new AmazonS3Client(accessKey, secretAccessKey,Amazon.RegionEndpoint.EUWest2);
+            AmazonS3Client client = new AmazonS3Client(accessKey, secretAccessKey,Amazon.RegionEndpoint.USEast1);
             var number = 0;
             foreach (var file in files)
             {
