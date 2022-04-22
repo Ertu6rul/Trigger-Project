@@ -26,7 +26,7 @@ namespace Trigger.API.Controllers
         public async Task<ActionResult<byte[]>> Get(int id,string voiceName)
         {
             var format = _formatReadRepository.GetByIdAsync(id); // IQueryable(Format)
-            var voice = await _formatReadRepository.GetFileFromS3(voiceName, "YVkoX/2P2uh6V/Q3tjnVYfhORKSODUS8uPgBtz4m", "AKIA6D7UD3FPE6UDHWPC", "badu-bucketaws-deneme");
+            var voice = );
             return File(voice, "application/octet-stream", voiceName);
         }
 
